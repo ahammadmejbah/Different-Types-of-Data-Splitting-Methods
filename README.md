@@ -1,4 +1,6 @@
-## **Different types of data splitting methods:**
+<div align="center">
+      <h1> <img src="#" width="80px"><br/>Different types of data splitting methods</h1>
+     </div>
 
 In order to prevent overfitting and guarantee that our model can generalize to new data, data splitting is essential in machine learning. Let's examine a few typical data splitting techniques:
 
@@ -72,3 +74,5 @@ Image Credit: Train test split procedure. | Image: Michael Galarnyk | Built In
 Always be sure that no information from the test set leaks into the training set with your data. This is crucial in instances like time series forecasting, where utilizing past data to predict the future may provide erroneous findings. 
 
 ## Credit <a href ="https://github.com/BytesOfIntelligence">BytesOfIntelligence</a>
+
+    
