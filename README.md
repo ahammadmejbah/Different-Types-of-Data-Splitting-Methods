@@ -9,6 +9,8 @@ In order to prevent overfitting and guarantee that our model can generalize to n
 Image Credit: Train test split procedure. | Image: Michael Galarnyk | Built In
 
 
+
+
 1. **Train/Test Split**
     This is the simplest method. We split our data into a training set and a testing set.
 
@@ -57,7 +59,6 @@ Image Credit: Train test split procedure. | Image: Michael Galarnyk | Built In
         y_train, y_test = y[train_index], y[test_index]
         # Train and test your model here
     ```
-
 5. **Leave One Out Cross Validation (LOOCV)**
     This involves training on all data points except one and testing on that single left out point. This is repeated for all data points. It's computationally intensive but can be useful for small datasets.
 
@@ -70,9 +71,37 @@ Image Credit: Train test split procedure. | Image: Michael Galarnyk | Built In
         y_train, y_test = y[train_index], y[test_index]
         # Train and test your model here
     ```
+ 6. **Stratified Sampling**
+
+ Stratified sampling ensures that the training and test sets have approximately the same percentage of samples of each target class as the complete set.
+
+ ```python
+ from sklearn.model_selection import train_test_split
+
+ # Assume X is your feature matrix and y is your labels
+ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
+ ```
+
+ 7. **Group K-Fold Cross-Validation**
+
+ Group K-Fold cross-validation is a variation of k-fold cross-validation that ensures the same group is not represented in both the training and test sets.
+
+ ```python
+ from sklearn.model_selection import GroupKFold
+
+ groups = [...]  # This needs to be a list of group identifiers corresponding to each observation in X
+ gkf = GroupKFold(n_splits=5)
+ for train_index, test_index in gkf.split(X, y, groups):
+    X_train, X_test = X[train_index], X[test_index]
+    y_train, y_test = y[train_index], y[test_index]
+    # Training and testing model
+ ```
+
+**In the above examples, `X` and `y` are your feature matrix and label vector respectively. Also, you need to have sklearn installed in your environment.**
+
 
 Always be sure that no information from the test set leaks into the training set with your data. This is crucial in instances like time series forecasting, where utilizing past data to predict the future may provide erroneous findings. 
 
-## Credit <a href ="https://github.com/BytesOfIntelligence">BytesOfIntelligence</a>
+## Credit <a href ="https://github.com/BytesOfIntelligences">BytesOfIntelligence</a>
 
     
